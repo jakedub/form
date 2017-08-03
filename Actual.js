@@ -94,24 +94,20 @@ let formData = [
   console.log( first.label );
 } )();
 
+//Code goes below here
 
-// -------- Your Code Goes Below this Line --------
 let fields = document.getElementById ("fields");
-let current;
-console.log(formData);
-console.log("formData length is: " + formData.length);
-for (let i=0; i<formData.length; i++) {
-  current = formData[i];
-  if(formData[i].type === "select") {
-    console.log("select found");
+const current = formData[i];
+for (let i=0; i<formData.length; i++)
+  if(current.type === "select") {
     let select = document.createElement ("select");
     fields.appendChild(select);
     select.setAttribute("placeholder", current.label);
-    for (let n=0; n<formData[i].options.length; n++) {
+    for (let n=0; n<formData.options.length; n++) {
       let option = document.createElement ("option");
       select.appendChild(option);
       option.setAttribute("value", current.options[n].value);
-      option.setAttribute("label", current.options[n].label);
+      option.setAttribute(current.options[n].label);
     }
   } else if (current.type === "textarea"){
     let textarea = document.createElement ("textarea");
@@ -125,4 +121,3 @@ for (let i=0; i<formData.length; i++) {
     input.setAttribute("id", current.label);
     input.setAttribute("placeholder", current.label);
   }
-}
